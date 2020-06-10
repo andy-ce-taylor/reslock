@@ -1,0 +1,23 @@
+{
+    "name": "acet/reslock",
+    "description": "Dependable advisory resource lock - for files and other contentious resources",
+    "keywords": [
+        "PHP", "flock", "advisory lock", "lock", "resource lock", "file lock", "race condition"
+    ],
+    "type": "library",
+    "license": "GPL-3.0",
+    "authors": [{
+        "name": "Andy Taylor",
+        "email": "andy.ce.taylor@gmail.com"
+    }],
+    "require": {
+        "php": "^5.3.3 || ^7.0"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "acet\\reslock\\": "src/"
+        }
+    },
+    "extra": {}
+}
