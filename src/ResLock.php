@@ -50,10 +50,10 @@ class ResLock
     const MAX_MILLISECOND_PAUSE  = 10000; // (YOU CAN CHANGE THIS) - 10000 = 10 milliseconds = 000.00001 seconds
 
     // Maximum number of attempts to lock a resource.
-    const MAX_LOCK_ATTEMPTS  = 10; // (YOU CAN CHANGE THIS)
+    const MAX_LOCK_ATTEMPTS  = 100; // (YOU CAN CHANGE THIS)
     
     // Maximum number of seconds that a resource can be locked.
-    const MAX_BLOCK_SECONDS = 6; // (YOU CAN CHANGE THIS)
+    const MAX_BLOCK_SECONDS = 60; // (YOU CAN CHANGE THIS)
 
     // Don't change anything below this line
 
@@ -166,10 +166,12 @@ class ResLock
 
     /**
      * Unlocks a previously locked resource.
+     *
+     * @param string  $handle
      */
     public function unlock($handle)
     {
-        if (array_key_exists($handle, $this->lockDirs)) {
+        if ($handle !== false && !is_null($handle) && array_key_exists($handle, $this->lockDirs)) {
             $ld = $this->lockDirs[$handle]['file'];
             $ld_ctime = $this->lockDirs[$handle]['ctime'];
 
