@@ -138,7 +138,7 @@ class ResLock
                     if (!in_array($file, $dir_refs)) {
                         $file = $this->locks_path . $file;
 
-                        if ($time - filectime($file) >= self::MAX_BLOCK_SECONDS) {
+                        if (($ctime = @filectime($file)) && $time - $ctime >= self::MAX_BLOCK_SECONDS) {
                             @rmdir($file);
                         }
                     }
